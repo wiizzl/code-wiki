@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Shell
+    x:Class="CodeWiki.AppShell"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:pages="clr-namespace:CodeWiki.Pages"
+    Title="CodeWiki"
+    Shell.TabBarForegroundColor="#ff5904"
+    Shell.TabBarTitleColor="#ff5904">
+
+    <TabBar>
+        <Tab Title="Langages" Icon="tabs/languages.svg">
+            <ShellContent ContentTemplate="{DataTemplate pages:LanguagesPage}" Route="LanguagesPage" />
+        </Tab>
+        <Tab Title="Bases de données" Icon="tabs/databases.svg">
+            <ShellContent ContentTemplate="{DataTemplate pages:DatabasesPage}" Route="DatabasesPage" />
+        </Tab>
+        <Tab Title="Distros" Icon="tabs/distros.svg">
+            <ShellContent ContentTemplate="{DataTemplate pages:DistrosPage}" Route="DistrosPage" />
+        </Tab>
+    </TabBar>
+
+</Shell>

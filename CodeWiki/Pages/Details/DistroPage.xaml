@@ -1,0 +1,55 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:vm="clr-namespace:CodeWiki.ViewModels.Details"
+             x:Class="CodeWiki.Pages.Details.DistroPage"
+             x:DataType="vm:DistroViewModel">
+    
+    <ScrollView>
+        <VerticalStackLayout Spacing="15" Padding="20" HorizontalOptions="FillAndExpand">
+
+            <Label Text="{Binding Distro.Name}"
+                   FontSize="24"
+                   FontAttributes="Bold"
+                   HorizontalOptions="Center"/>
+            
+            <Label Text="{Binding Distro.Family, StringFormat='Famille : {0}'}"
+                   FontSize="16"/>
+
+            <Label Text="{Binding Distro.ReleaseYear, StringFormat='Année de sortie : {0}'}"
+                   FontSize="16"/>
+
+            <Label Text="Description :"
+                   FontSize="16"
+                   FontAttributes="Bold"/>
+            <Label Text="{Binding Distro.Description}"
+                   FontSize="14"
+                   MaxLines="10"
+                   LineBreakMode="WordWrap"/>
+
+            <Image Source="{Binding Distro.ImageSource}"
+                   Aspect="AspectFit"
+                   HeightRequest="200"
+                   WidthRequest="200"
+                   HorizontalOptions="Center"
+                   IsVisible="{Binding Distro.ImageSource}"/>
+
+            <Label Text="Meme :"
+                   FontSize="16"
+                   FontAttributes="Bold"
+                   IsVisible="{Binding Distro.MemeDescription}"/>
+            <Label Text="{Binding Distro.MemeDescription}"
+                   FontSize="14"
+                   IsVisible="{Binding Distro.MemeDescription}"/>
+
+            <Image Source="{Binding Distro.MemeSource}"
+                   Aspect="AspectFit"
+                   HeightRequest="200"
+                   WidthRequest="200"
+                   HorizontalOptions="Center"
+                   IsVisible="{Binding Distro.MemeSource}"/>
+
+        </VerticalStackLayout>
+    </ScrollView>
+
+</ContentPage>

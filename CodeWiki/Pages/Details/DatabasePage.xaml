@@ -1,0 +1,55 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:vm="clr-namespace:CodeWiki.ViewModels.Details"
+             x:Class="CodeWiki.Pages.Details.DatabasePage"
+             x:DataType="vm:DatabaseViewModel">
+
+    <ScrollView>
+        <VerticalStackLayout Spacing="15" Padding="20" HorizontalOptions="FillAndExpand">
+
+            <Label Text="{Binding Database.Name}"
+                   FontSize="24"
+                   FontAttributes="Bold"
+                   HorizontalOptions="Center"/>
+
+            <Label Text="{Binding Database.Creator, StringFormat='Créateur : {0}'}"
+                   FontSize="16"/>
+
+            <Label Text="{Binding Database.ReleaseYear, StringFormat='Année de sortie : {0}'}"
+                   FontSize="16"/>
+
+            <Label Text="Description :"
+                   FontSize="16"
+                   FontAttributes="Bold"/>
+            <Label Text="{Binding Database.Description}"
+                   FontSize="14"
+                   MaxLines="10"
+                   LineBreakMode="WordWrap"/>
+
+            <Image Source="{Binding Database.ImageSource}"
+                   Aspect="AspectFit"
+                   HeightRequest="200"
+                   WidthRequest="200"
+                   HorizontalOptions="Center"
+                   IsVisible="{Binding Database.ImageSource}"/>
+
+            <Label Text="Meme :"
+                   FontSize="16"
+                   FontAttributes="Bold"
+                   IsVisible="{Binding Database.MemeDescription}"/>
+            <Label Text="{Binding Database.MemeDescription}"
+                   FontSize="14"
+                   IsVisible="{Binding Database.MemeDescription}"/>
+
+            <Image Source="{Binding Database.MemeSource}"
+                   Aspect="AspectFit"
+                   HeightRequest="200"
+                   WidthRequest="200"
+                   HorizontalOptions="Center"
+                   IsVisible="{Binding Database.MemeSource}"/>
+
+        </VerticalStackLayout>
+    </ScrollView>
+    
+</ContentPage>

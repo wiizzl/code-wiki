@@ -1,0 +1,89 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:vm="clr-namespace:CodeWiki.ViewModels"
+             xmlns:model="clr-namespace:CodeWiki.Models"
+             x:Class="CodeWiki.Pages.DistrosPage"
+             x:DataType="vm:DistrosViewModel">
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Color x:Key="PrimaryColor">#ff5904</Color>
+            <Color x:Key="CardColor">#FAFAFA</Color>
+            <Color x:Key="BorderColor">#E0E0E0</Color>
+
+            <Style x:Key="CardStyle" TargetType="Border">
+                <Setter Property="BackgroundColor" Value="{DynamicResource CardColor}" />
+                <Setter Property="Padding" Value="10" />
+                <Setter Property="Stroke" Value="{DynamicResource BorderColor}" />
+                <Setter Property="StrokeThickness" Value="1" />
+                <Setter Property="StrokeShape">
+                    <Setter.Value>
+                        <RoundRectangle CornerRadius="10" />
+                    </Setter.Value>
+                </Setter>
+            </Style>
+
+            <Style x:Key="TitleLabelStyle" TargetType="Label">
+                <Setter Property="FontSize" Value="18" />
+                <Setter Property="FontAttributes" Value="Bold" />
+                <Setter Property="TextColor" Value="{DynamicResource PrimaryColor}" />
+            </Style>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+    <VerticalStackLayout>
+        <Label Text="Distributions Linux"
+               FontSize="24"
+               FontAttributes="Bold"
+               TextColor="{DynamicResource PrimaryColor}"
+               Margin="20,10,0,10"
+               HorizontalOptions="Start" />
+
+        <CollectionView SelectionMode="Single"
+                        ItemsSource="{Binding Distros}"
+                        SelectionChangedCommand="{Binding OpenDetailPageCommand}"
+                        SelectionChangedCommandParameter="{Binding Path=SelectedItem, Source={RelativeSource Self}}"
+                        Margin="10">
+
+            <CollectionView.ItemTemplate>
+                <DataTemplate x:DataType="model:Distro">
+                    <Border Style="{StaticResource CardStyle}" Margin="0,0,0,10">
+                        <VisualStateManager.VisualStateGroups>
+                            <VisualStateGroup Name="CommonStates">
+                                <VisualState Name="Normal"></VisualState>
+                                <VisualState Name="Selected">
+                                    <VisualState.Setters>
+                                        <Setter Property="BackgroundColor" Value="Transparent"></Setter>
+                                    </VisualState.Setters>
+                                </VisualState>
+                                
+                            </VisualStateGroup>
+                        </VisualStateManager.VisualStateGroups>
+                        
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto" />
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="Auto" />
+                            </Grid.ColumnDefinitions>
+
+                            <Label Text="{Binding Name}"
+                                   Style="{StaticResource TitleLabelStyle}"
+                                   Grid.Column="0"
+                                   HorizontalOptions="Start" />
+                            
+
+                            <Image Source="{Binding ImageSource}"
+                                   HeightRequest="30"
+                                   WidthRequest="30"
+                                   Grid.Column="1"
+                                   HorizontalOptions="End" />
+                        </Grid>
+                    </Border>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+    </VerticalStackLayout>
+
+</ContentPage>
