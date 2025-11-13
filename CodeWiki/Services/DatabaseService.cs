@@ -16,7 +16,7 @@ public partial class DatabaseService
     {
         _database = new SQLiteConnection(DatabasePath, Flags);
 
-        var resetDatabase = false;
+        var resetDatabase = true;
         if (!resetDatabase) return;
         
         _database.CreateTable<Language>();
